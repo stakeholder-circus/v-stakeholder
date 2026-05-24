@@ -1,14 +1,14 @@
 # Gaps
 
-This repository is scaffold-only for the V HorizonLanguage target. It contains baseline coordination files only. No deterministic runtime validation is claimed.
+## Closed in this tranche
 
-## Horizon target
+- Scaffold-only status replaced with a native V deterministic CLI.
+- Dedicated `classic-six + modern-core` families implemented.
+- Later families use explicit grouped fallback renderers.
+- Experimental provider flags fail fast.
 
-- Language id: v
-- Display name: V
-- Horizon status: reserve-next20
-- Target class: parity-target
-- Repository: v-stakeholder
-## Scaffold scope
+## Remaining gaps
 
-This scaffold-only repo intentionally has full runtime gaps. Source audit, implementation, fixtures, parity checks, package metadata, and release automation remain deferred.
+- Docker validation is deferred for M1 resource safety.
+- Full live-provider/runtime support is deferred to the provider rollout wave.
+- Remote publication and required-check binding are not started.

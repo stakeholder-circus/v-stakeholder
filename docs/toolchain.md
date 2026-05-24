@@ -1,14 +1,13 @@
 # Toolchain
 
-This repository is scaffold-only for the V HorizonLanguage target. It contains baseline coordination files only. No deterministic runtime validation is claimed.
+V native validation uses the Homebrew `vlang` compiler on arm64 macOS.
 
-## Horizon target
+## Proven commands
 
-- Language id: v
-- Display name: V
-- Horizon status: reserve-next20
-- Target class: parity-target
-- Repository: v-stakeholder
-## Scaffold scope
+- `v version`
+- `v fmt -verify src/main.v`
+- `v -gc none -o bin/stakeholder src/main.v`
+- `make compiler-proof`
+- `make test`
 
-Toolchain status: scaffold-only. No compiler, interpreter, formatter, package manager, test runner, or deterministic runtime validation has been selected or proven.
+Toolchain source: Homebrew bottled `vlang` 0.5.1. The native binary is compiled with `-gc none` because the default Homebrew V compiler attempted to link `libgc` on this host. Docker, Nix, and third-party V packages are not required for the current deterministic first tranche.
