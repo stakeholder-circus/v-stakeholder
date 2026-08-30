@@ -1,5 +1,5 @@
 > [!WARNING]
-> This repository is AI-assisted and manually reviewed. It is local-only in the resource-safe small deterministic tranche.
+> This repository is AI-assisted and manually reviewed. Its deterministic V tranche is published with explicit validation evidence.
 
 # v-stakeholder
 
@@ -18,6 +18,8 @@ V implementation of the stakeholder deterministic first tranche.
 - `python3 scripts/validate_scaffold.py`
 - `make compiler-proof`
 - `make test`
-- `make build && bin/stakeholder --list-values`
+- `docker build -t v-stakeholder .`
+- `docker run --rm v-stakeholder --list-values`
 
-Docker is intentionally not used in this M1-safe pass; native V is the validation lane.
+GitHub CI runs native Linux/macOS/Windows tests, `v vet`, Docker build/runtime
+smokes, dependency review, actionlint, and workflow-security analysis.

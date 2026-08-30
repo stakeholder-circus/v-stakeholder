@@ -1,13 +1,33 @@
-name: Scaffold Docker Smoke
+name: docker-smoke
 
 on:
+  workflow_dispatch:
   push:
   pull_request:
 
+permissions:
+  contents: read
+
 jobs:
-  scaffold:
+  docker-smoke:
     runs-on: ubuntu-latest
+    timeout-minutes: 20
     steps:
-      - name: Scaffold-only status
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - run: docker build -t v-stakeholder .
+      - run: docker run --rm v-stakeholder --list-values
+      - run: docker run --rm v-stakeholder --focus-family code-analyzer --output-format json --seed 7
+      - run: docker run --rm v-stakeholder --focus-family platform-engineering --output-format json --seed 7
+      - name: Deterministic same-seed proof
         run: |
-          echo "scaffold-only Docker smoke placeholder; no deterministic runtime validation is claimed"
+          docker run --rm v-stakeholder --focus-family platform-engineering --output-format json --seed 8675309 > /tmp/a.json
+          docker run --rm v-stakeholder --focus-family platform-engineering --output-format json --seed 8675309 > /tmp/b.json
+          diff -u /tmp/a.json /tmp/b.json
+      - name: Experimental provider fail-fast
+        run: |
+          set +e
+          docker run --rm v-stakeholder --experimental-provider local-demo
+          status=$?
+          test "$status" -eq 2

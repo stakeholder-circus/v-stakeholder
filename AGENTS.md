@@ -1,14 +1,9 @@
-# Repository agent instructions
+# v-stakeholder AGENTS
 
-This repository is scaffold-only for the V HorizonLanguage target. It contains baseline coordination files only. No deterministic runtime validation is claimed.
-
-## Horizon target
-
-- Language id: v
-- Display name: V
-- Horizon status: reserve-next20
-- Target class: parity-target
-- Repository: v-stakeholder
-## Scaffold scope
-
-Operate this repo as scaffold-only. Do not infer runtime parity, deterministic execution, or validated behavior from these files. Future implementation work must add traceability before changing behavior.
+- Preserve imported Rust history and provenance.
+- Current phase target: compiled deterministic `classic-six + modern-core` with grouped fallback for later families.
+- CLI contract: `--list-values`, `--focus-family`, `--output-format`, `--seed`, and explicit `--experimental-provider` fail-fast.
+- Native validation uses pinned V 0.5.2 across Linux, macOS, and Windows.
+- Docker builds V from the pinned upstream release commit and runs the CLI contract tests.
+- Missing behavior must fail fast and remain documented in `GAPS.md`.
+- Full live-provider/runtime support remains a required second-pass wave.
