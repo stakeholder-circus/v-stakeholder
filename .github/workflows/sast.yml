@@ -18,8 +18,6 @@ jobs:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
           persist-credentials: false
-      - uses: vlang/setup-v@663cc08827d1fc0532ee755b4dedbb183c11d06a # v1.7
-        with:
-          token: ${{ github.token }}
-          version: 7647ce1c6fad63b5578bc07883139906de74b2f8
+      - name: Install verified V release
+        run: scripts/setup_v_release.sh
       - run: v vet src/main.v

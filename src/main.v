@@ -190,8 +190,8 @@ fn main() {
 				if i + 1 >= os.args.len {
 					fail('missing value for --experimental-provider')
 				}
-				fail_with('experimental provider is not enabled in the deterministic first tranche',
-					os.args[i + 1])
+				fail_with('experimental provider is not enabled in the deterministic first tranche', os.args[
+					i + 1])
 			}
 			else {
 				if arg.starts_with('--experimental-') {
