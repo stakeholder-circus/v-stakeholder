@@ -1,19 +1,20 @@
 # v-stakeholder Status
 
 - Phase target: deterministic first tranche
-- Phase state: native-validated local tranche
-- Program state: local deterministic widening
-- Publication state: local only, no upstream tracking, no push
-- Current implementation: compiled V runtime using struct catalog data and deterministic string rendering without package dependencies; native build uses `-gc none` to avoid the host `libgc` linker issue
+- Phase state: native and Docker remote validation in progress
+- Program state: published deterministic widening
+- Publication state: public GitHub repository; required checks bind after the first stable hardened CI pass
+- Current implementation: compiled V runtime with deterministic struct catalog and no package dependencies
 
 ## Evidence
 
 - `python3 scripts/validate_scaffold.py`
-- `make compiler-proof`
 - `make test`
+- GitHub native matrix using pinned V 0.5.2
+- Docker build and runtime contract smokes
+- `v vet` language-native SAST
 
 ## Open
 
-- Docker validation is deferred for M1 resource safety.
 - Full live-provider/runtime support is deferred to the second-pass provider rollout wave.
-- Publication remains blocked by the local-only policy for horizon scaffold and small-tranche work.
+- Canonical program status must be updated after hardened remote CI is green.

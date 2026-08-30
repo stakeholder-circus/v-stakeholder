@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Validate V local deterministic tranche baseline file presence."""
+"""Validate V deterministic tranche baseline file presence."""
 
 from pathlib import Path
 
@@ -17,9 +17,14 @@ REQUIRED = [
     "scripts/validate_scaffold.py",
     "flake.nix",
     "Dockerfile",
+    ".github/dependabot.yml",
+    ".github/workflows/actionlint.yml",
     ".github/workflows/ci.yml",
     ".github/workflows/ci-native.yml",
+    ".github/workflows/dependency-review.yml",
     ".github/workflows/docker-smoke.yml",
+    ".github/workflows/sast.yml",
+    ".github/workflows/security-analysis.yml",
     "Makefile",
     "src/main.v",
     "tests/test_cli.sh",
@@ -32,7 +37,7 @@ def main() -> int:
         for path in missing:
             print(f"missing V deterministic tranche file: {path}")
         return 1
-    print("V deterministic tranche baseline files present; run make test for native validation")
+    print("V deterministic tranche files present; run native and Docker validation")
     return 0
 
 

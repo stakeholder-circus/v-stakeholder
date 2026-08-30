@@ -2,13 +2,13 @@
 
 ## Closed in this tranche
 
-- Scaffold-only status replaced with a native V deterministic CLI.
+- Scaffold-only status replaced with a compiled deterministic V CLI.
 - Dedicated `classic-six + modern-core` families implemented.
 - Later families use explicit grouped fallback renderers.
 - Experimental provider flags fail fast.
+- Native, Docker, dependency, and workflow-security CI is implemented.
 
 ## Remaining gaps
 
-- Docker validation is deferred for M1 resource safety.
 - Full live-provider/runtime support is deferred to the provider rollout wave.
-- Remote publication and required-check binding are not started.
+- Required-check binding waits for the first stable hardened CI pass.

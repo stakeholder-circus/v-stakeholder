@@ -1,0 +1,25 @@
+name: sast
+
+on:
+  workflow_dispatch:
+  push:
+  pull_request:
+  schedule:
+    - cron: '31 3 * * 1'
+
+permissions:
+  contents: read
+
+jobs:
+  v-vet:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - uses: vlang/setup-v@663cc08827d1fc0532ee755b4dedbb183c11d06a # v1.7
+        with:
+          token: ''
+          version: 7647ce1c6fad63b5578bc07883139906de74b2f8
+      - run: v vet src/main.v

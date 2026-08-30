@@ -1,6 +1,6 @@
 # Parity
 
-Parity classification: deterministic first tranche, native-validated local only.
+Parity classification: deterministic first tranche, native and Docker validation pending remote proof.
 
 ## Implemented
 
@@ -11,6 +11,5 @@ Parity classification: deterministic first tranche, native-validated local only.
 
 ## Deferred
 
-- Docker validation.
 - Full live-provider/runtime support.
-- Publication governance.
+- Full program-family parity.
