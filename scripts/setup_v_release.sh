@@ -42,7 +42,11 @@ install_root="${RUNNER_TEMP}/v-${version}"
 curl --fail --location --silent --show-error \
   "https://github.com/vlang/v/releases/download/${version}/${asset}" \
   --output "$archive"
-printf '%s  %s\n' "$checksum" "$archive" | sha256sum --check --strict
+if [[ "$platform" == macOS ]]; then
+  printf '%s  %s\n' "$checksum" "$archive" | shasum -a 256 --check
+else
+  printf '%s  %s\n' "$checksum" "$archive" | sha256sum --check --strict
+fi
 rm -rf "$install_root"
 mkdir -p "$install_root"
 unzip -q "$archive" -d "$install_root"
