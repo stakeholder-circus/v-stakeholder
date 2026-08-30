@@ -20,6 +20,6 @@ jobs:
           persist-credentials: false
       - uses: vlang/setup-v@663cc08827d1fc0532ee755b4dedbb183c11d06a # v1.7
         with:
-          token: ''
+          token: ${{ github.token }}
           version: 7647ce1c6fad63b5578bc07883139906de74b2f8
       - run: v vet src/main.v
